@@ -6,7 +6,7 @@ const VideoBackground = ({id}) => {
 
 const trailerVideo =useSelector((state)=>state.movies?.addTrailerVideo)
 
-useTrailerVideo();
+useTrailerVideo(id);
 
   return (
     <div>
