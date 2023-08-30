@@ -9,7 +9,8 @@ import {
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/userSlice";
+import { addUser } from "../utils/slices/userSlice";
+import { AVATAR, NETFLIX_BG } from "../utils/constant";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -55,7 +56,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://media.licdn.com/dms/image/D4D35AQE2DblJOeCyCw/profile-framedphoto-shrink_400_400/0/1682330385285?e=1693890000&v=beta&t=ZgoR7gmUTN50Nv6rXgcBhmbnUpkPFSmduo3b-Ou3nkk"
+            photoURL: AVATAR
           }).then(()=>{
             const {uid, email, displayName, photoURL}=auth.currentUser
             dispatch(addUser({uid:uid, email:email, displayName:displayName, photoURL:photoURL}))
@@ -79,7 +80,7 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/00103100-5b45-4d4f-af32-342649f1bda5/64774cd8-5c3a-4823-a0bb-1610d6971bd4/IN-en-20230821-popsignuptwoweeks-perspective_alpha_website_small.jpg"
+          src={NETFLIX_BG}
           alt=""
         />
       </div>
