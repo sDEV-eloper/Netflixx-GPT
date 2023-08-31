@@ -1,20 +1,26 @@
 import React from 'react'
 import Header from './Header'
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
+import usePopularMovies from '../hooks/usePopularMovies'
 import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
+import useTopRatedMovies from '../hooks/useTopRatedMovies';
 
 const Browse = () => {
 
   //fetch api and update store -call custom hook
   useNowPlayingMovies();
+  usePopularMovies()
+  useTopRatedMovies()
 
   return (
     <>
-    <div className='flex justify-between h-full'>
+    <div className='flex justify-between h-full '>
   <Header/>
+  <div className='flex flex-col'> 
   <MainContainer/>
   <SecondaryContainer/>
+  </div>
     </div>
     </>
   )
