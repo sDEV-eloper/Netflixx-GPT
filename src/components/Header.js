@@ -8,7 +8,7 @@ import { netflixLogo } from '../utils/constant'
 
 const Header = () => {
   const dispatch=useDispatch()
-const user=useSelector(store=>store.user)
+const user=useSelector((store)=>store.user)
   const navigate=useNavigate()
   const handleSignOut=()=>{
 signOut(auth).then(()=>{
