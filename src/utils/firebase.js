@@ -5,13 +5,12 @@ import { getAnalytics } from "firebase/analytics";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDGpsS4cMVggHXFpZt5XrwRhUI5VsJraRo",
-  authDomain: "netflixgpt-5e08d.firebaseapp.com",
-  projectId: "netflixgpt-5e08d",
-  storageBucket: "netflixgpt-5e08d.appspot.com",
-  messagingSenderId: "997415975856",
-  appId: "1:997415975856:web:8051c8c9b316894572b475",
-  measurementId: "G-FK7BTPTHQZ"
+  apiKey: "AIzaSyCOEtloZJ7WkqOc-UluLQ3tN5XN_307Ohw",
+  authDomain: "netflix-gpt-c1e2c.firebaseapp.com",
+  projectId: "netflix-gpt-c1e2c",
+  storageBucket: "netflix-gpt-c1e2c.appspot.com",
+  messagingSenderId: "159505945875",
+  appId: "1:159505945875:web:0476c9b1ed8d5b01af76e6"
 };
 
 // Initialize Firebase
