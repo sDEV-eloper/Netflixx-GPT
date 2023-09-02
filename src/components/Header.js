@@ -51,7 +51,7 @@ return (
    <div className='ml-auto mr-5'>
     <select className='p-2 bg-gray-800 text-yellow-50 rounded ' onChange={handleLanguageChange}>
       {SUPPORTED_LANGUAGE.map((lang)=>
-      <option value={lang.id}>{lang.name}</option>
+      <option key={lang.id} value={lang.id}>{lang.name}</option>
       )}
     </select>
    </div>
