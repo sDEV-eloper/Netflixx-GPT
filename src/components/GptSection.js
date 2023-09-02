@@ -9,15 +9,10 @@ const GPTSearch = () => {
   return (
     <>
          <GptSearchBar />
-     { !movieResults ?
-     <div className="d-flex justify-content-center">
-      OPENAI API KEY  LIMIT EXCEEDED
-     </div>
-     :
        <div className=" absolute  w-screen flex">
        <GptMovieSuggestions />
       </div>
-    }
+    
     </>
   );
 };

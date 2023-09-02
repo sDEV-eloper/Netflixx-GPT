@@ -7,31 +7,73 @@ import { addSearchMovies } from '../utils/slices/gptSlice';
 import GptSearchResults from './GptMovieSuggestions';
 
 const GptSearchBar = () => {
+    const [error, setError] = useState(null);
     const dispatch=useDispatch();
     const currentLanguage=useSelector((store)=>store.config.lang)
     const searchText=useRef(null)
     const searchMovie=async(movie)=>{
-        const data=await fetch(SEARCH_MOVIE_URL+movie+"&include_adult=false&language=en-US&page=1", API_OPTIONS)
-         const json=await data.json()
-         return json.results;
+        try {
+            const data = await fetch(SEARCH_MOVIE_URL + movie + "&include_adult=false&language=en-US&page=1", API_OPTIONS);
+        
+            if (!data.ok) {
+              // If the response status is not OK (e.g., 404 or 500), throw an error
+              throw new Error(`Failed to fetch data. Status: ${data.status}`);
+            }
+        
+            const json = await data.json();
+            return json.results;
+          } catch (error) {
+            console.error("Error:", error.message);
+           
+          }
         }
-        const handleGptSearchClick=async()=>{
-            //Make api call  to gpt api to search results
-            const gptQuery= "Act as a Movie Recommendation system and suggest some movies for the query : " +
-            searchText.current.value + ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
-      
-            const gptResults = await openai.chat.completions.create({
+        const handleGptSearchClick = async () => {
+            const searchTextValue = searchText.current.value;
+          
+            // Make an API call to the GPT API to search results
+            const gptQuery =
+              "Act as a Movie Recommendation system and suggest some movies for the query: " +
+              searchTextValue +
+              ". Only give me names of 5 movies, comma-separated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
+          
+            let gptResults;
+          
+            try {
+              gptResults = await openai.chat.completions.create({
                 messages: [{ role: 'user', content: gptQuery }],
                 model: 'gpt-3.5-turbo',
-            });
-            const gptMovies=gptResults?.choices[0]?.message?.content.split(",")
-            console.log("GptMovies", gptMovies)
-            const promiseArr=gptMovies.map((item)=>searchMovie(item))
-            const tmdbResults=await Promise.all(promiseArr)
-            console.log(tmdbResults)
-              dispatch(addSearchMovies({movieNames:gptMovies, movieResults:tmdbResults}))
+              });
             
-        }
+              // Handle the response here
+              console.log(gptResults.data.choices[0].text);
+            } catch (error) {
+              // Handle errors here
+              console.error('Error:', error.response ? error.response.data : error.message);
+              setError("🙇‍♂️Sorry! I have exceeded the rate limit allowed for API key")
+              return; // Exit the function if there's an error
+            }
+          
+            const gptMovies = gptResults?.choices[0]?.message?.content.split(',');
+            console.log("GptMovies", gptMovies);
+          
+            // Handle errors for searchMovie calls
+            const promiseArr = gptMovies.map((item) => searchMovie(item));
+            let tmdbResults;
+          
+            try {
+              tmdbResults = await Promise.all(promiseArr);
+            } catch (error) {
+              // Handle errors here
+              console.error('Error fetching movie results:', error);
+              return; // Exit the function if there's an error
+            }
+          
+            console.log(tmdbResults);
+          
+            // Assuming 'dispatch' and 'addSearchMovies' are defined and work as intended
+            dispatch(addSearchMovies({ movieNames: gptMovies, movieResults: tmdbResults }));
+          };
+          
         
     return (
         <div className='absolute w-1/2 top-[30%]'>  
@@ -43,6 +85,9 @@ const GptSearchBar = () => {
             </button>
     </div>
 </form>
+{error && <div className='rounded-lg bg-black border-red-500 border-2 text-red-500 text-xl font-medium p-4 text-center mt-2'>
+    {error}
+</div>}
     </div>
   )
 }
