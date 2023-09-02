@@ -22,11 +22,15 @@ export const TOP_RATED_URL =
   "https://api.themoviedb.org/3/movie/top_rated?&page=1";
 export const UPCOMING_URL =
   "https://api.themoviedb.org/3/movie/upcoming?&page=1";
+export const SEARCH_MOVIE_URL = "https://api.themoviedb.org/3/search/movie?query=";
 export const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 export const POSTER_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 export const SUPPORTED_LANGUAGE = [
-  { id: "en",  name: "English",  },
+  { id: "en", name: "English" },
   { id: "hin", name: "Hindi" },
   { id: "spn", name: "Spanish" },
 ];
+
+export const OPENAI_API_KEY =
+  "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";
