@@ -6,7 +6,7 @@ import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
 import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import useUpcomingMovies from '../hooks/useUpcomingMovies';
-import GptSearch from './GptSearch';
+import GptSection from './GptSection';
 import { useSelector } from 'react-redux';
 import { NETFLIX_BG } from '../utils/constant';
 
@@ -33,7 +33,7 @@ const Browse = () => {
       src={NETFLIX_BG}
       alt=""
     />
-  <GptSearch/>
+  <GptSection/>
   </div>
   :
   <div className='flex flex-col'> 

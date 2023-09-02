@@ -9,12 +9,10 @@ const useTopRatedMovies = () => {
     const topRatedMovies = useSelector(
       (store) => store.movies.addTopRatedMovies
     );
-    console.log("TopRatedMOvies", topRatedMovies)
     const getTopRatedMovies=async()=>{
       try {
        const data= await fetch(TOP_RATED_URL, API_OPTIONS)
        const json = await data.json();
-       console.log("JSON ", json)
        dispatch(addTopRatedMovies(json.results))
      } catch (error) {
        console.error('Error fetching data:', error);

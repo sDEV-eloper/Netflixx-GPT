@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '../utils/firebase'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser, removeUser } from '../utils/slices/userSlice'
 import { SUPPORTED_LANGUAGE, netflixLogo } from '../utils/constant'
 import { toggleGptView } from '../utils/slices/gptSlice'
-import GptSearch from './GptSearch'
 import { changeLanguage } from '../utils/slices/configSlice'
 
 const Header = () => {
