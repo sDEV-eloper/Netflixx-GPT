@@ -45,7 +45,6 @@ const GptSearchBar = () => {
               });
             
               // Handle the response here
-              console.log(gptResults.data.choices[0].text);
             } catch (error) {
               // Handle errors here
               console.error('Error:', error.response ? error.response.data : error.message);
@@ -54,7 +53,6 @@ const GptSearchBar = () => {
             }
           
             const gptMovies = gptResults?.choices[0]?.message?.content.split(',');
-            console.log("GptMovies", gptMovies);
           
             // Handle errors for searchMovie calls
             const promiseArr = gptMovies.map((item) => searchMovie(item));
@@ -67,8 +65,6 @@ const GptSearchBar = () => {
               console.error('Error fetching movie results:', error);
               return; // Exit the function if there's an error
             }
-          
-            console.log(tmdbResults);
           
             // Assuming 'dispatch' and 'addSearchMovies' are defined and work as intended
             dispatch(addSearchMovies({ movieNames: gptMovies, movieResults: tmdbResults }));
@@ -86,7 +82,7 @@ const GptSearchBar = () => {
     </div>
 </form>
 {error && <div className='rounded-lg bg-black border-red-500 border-2 text-red-500 text-xl font-medium p-4 text-center mt-2'>
-    {error}
+    {lang[currentLanguage].apiError}
 </div>}
     </div>
   )
