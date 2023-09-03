@@ -48,13 +48,13 @@ const handleLanguageChange=(e)=>{
 return (
   <div className='absolute bg-gradient-to-b from-black z-10 w-full flex justify-between items-center p-2'>
     <img src={netflixLogo} alt="" className='w-40'/>    
-   <div className='ml-auto mr-5'>
+  { toggleGptButton && <div className='ml-auto mr-5'>
     <select className='p-2 bg-gray-800 text-yellow-50 rounded ' onChange={handleLanguageChange}>
       {SUPPORTED_LANGUAGE.map((lang)=>
       <option key={lang.id} value={lang.id}>{lang.name}</option>
       )}
     </select>
-   </div>
+   </div>}
   { user &&  <div className='flex justify-between items-center gap-2'>
     <button  className='bg-green-700 text-white hover:bg-green-800 px-2 py-1 h-1/2 items-center rounded-lg' onClick={handleGptSearch}>
     {toggleGptButton ?"Back":"AI Search"}

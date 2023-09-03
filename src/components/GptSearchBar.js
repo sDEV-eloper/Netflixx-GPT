@@ -82,7 +82,7 @@ const GptSearchBar = () => {
     </div>
 </form>
 {error && <div className='rounded-lg bg-black border-red-500 border-2 text-red-500 text-xl font-medium p-4 text-center mt-2'>
-    {error}
+    {lang[currentLanguage].apiError}
 </div>}
     </div>
   )
