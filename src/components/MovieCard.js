@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { POSTER_BASE_URL } from '../utils/constant'
 import VideoTrailerBg from './VideoTrailerBg'
 

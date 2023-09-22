@@ -1,11 +1,10 @@
 
-import { useSelector } from "react-redux";
-import { NETFLIX_BG } from "../utils/constant";
+
 import GptMovieSuggestions from "./GptMovieSuggestions";
 import GptSearchBar from "./GptSearchBar";
 
 const GPTSearch = () => {
-  const { movieResults, movieNames } = useSelector((store) => store.gpt);
+
   return (
     <>
          <GptSearchBar />

@@ -1,6 +1,4 @@
-import React from 'react'
-import {FaPlay} from 'react-icons/fa'
-import {AiOutlineInfoCircle} from 'react-icons/ai'
+
 
 const VideoTitle = ({title, overview}) => {
   return (

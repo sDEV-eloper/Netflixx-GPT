@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, {  useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { lang } from '../utils/langConstant';
 import { openai } from '../utils/OpenAi';
-import { API_OPTIONS, BASE_IMAGE_URL, SEARCH_MOVIE_URL, TheShining } from '../utils/constant';
+import { API_OPTIONS, SEARCH_MOVIE_URL} from '../utils/constant';
 import { addSearchMovies } from '../utils/slices/gptSlice';
-import GptSearchResults from './GptMovieSuggestions';
 
 const GptSearchBar = () => {
     const [error, setError] = useState(null);
