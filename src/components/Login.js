@@ -86,7 +86,7 @@ const Login = () => {
 
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute flex flex-col bg-black top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-opacity-75 p-8 rounded-md w-1/3"
+        className="absolute flex flex-col bg-black top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-opacity-75 p-8 rounded-md md:w-1/3"
       >
         <p className="text-white font-medium text-4xl p-4">
           {isSignInForm ? "Sign In" : "Sign up"}{" "}
